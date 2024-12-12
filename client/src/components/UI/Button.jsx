@@ -1,4 +1,4 @@
-import "../assets/styles/button.css";
+import "../../assets/styles/button.css";
 import PropTypes from "prop-types";
 
 const Button = ({ children, onButtonClick }) => {

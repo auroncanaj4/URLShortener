@@ -1,4 +1,4 @@
-import "../assets/styles/delete-modal.css";
+import "../../assets/styles/delete-modal.css";
 import Modal from "./Modal";
 import PropTypes from "prop-types";
 

@@ -4,11 +4,12 @@ import qrCodeIcon from "../assets/images/qr-icon.png";
 import PropTypes from "prop-types";
 import "../assets/styles/navbar.css";
 import { Fragment, useState } from "react";
-import DeleteModal from "./DeleteModal";
-import QrModal from "./QrModal";
-import Button from "./Button";
+import DeleteModal from "./UI/DeleteModal";
+import QrModal from "./UI/QrModal";
+import Button from "./UI/Button";
 
 const Navbar = ({ shortenedUrls }) => {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [showDelete, setShowDelete] = useState(null);
   const [qrCode, setQrCode] = useState({
     value: null,
@@ -28,7 +29,7 @@ const Navbar = ({ shortenedUrls }) => {
 
   const handleDeleteUrl = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/deleteUrl/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/deleteUrl/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
@@ -44,9 +45,7 @@ const Navbar = ({ shortenedUrls }) => {
   };
   const handleGenerateQrCode = async (shortCode) => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/generateQr/${shortCode}`
-      );
+      const response = await fetch(`${API_BASE_URL}/generateQr/${shortCode}`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -56,7 +55,7 @@ const Navbar = ({ shortenedUrls }) => {
         shortCode: shortCode,
       });
     } catch (error) {
-      console.error("Error deleting url:", error.message);
+      console.error("Error generating QR Code:", error.message);
     }
   };
 
@@ -66,9 +65,9 @@ const Navbar = ({ shortenedUrls }) => {
         <li className="shortenedUrl">
           <div className="listElementUrl">
             <a
-              href={`http://localhost:8080/${item.short_code}`}
+              href={`${API_BASE_URL}/${item.short_code}`}
               target="_blank"
-            >{`http://localhost:8080/${item.short_code}`}</a>
+            >{`${API_BASE_URL}/${item.short_code}`}</a>
             <Button onButtonClick={() => handleShowDelete(item.id)}>
               <img className="buttonIcon" src={deleteIcon} alt="deleteIcon" />
             </Button>
@@ -85,7 +84,7 @@ const Navbar = ({ shortenedUrls }) => {
             <DeleteModal
               onHandleDelete={() => handleDeleteUrl(item.id)}
               onCancelDelete={handleCancelDelete}
-              url={`http://localhost:8080/${item.short_code}`}
+              url={`${API_BASE_URL}/${item.short_code}`}
             />
           )}
           {qrCode.shortCode === item.short_code && (

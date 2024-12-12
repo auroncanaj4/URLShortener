@@ -1,4 +1,4 @@
-import "../assets/styles/alert.css";
+import "../../assets/styles/alert.css";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 const Alert = ({ alertContent }) => {

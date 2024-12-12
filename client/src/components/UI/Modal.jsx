@@ -1,4 +1,4 @@
-import "../assets/styles/modal-wrapper.css";
+import "../../assets/styles/modal-wrapper.css";
 import PropTypes from "prop-types";
 
 const Modal = ({ children, onCloseModal }) => {

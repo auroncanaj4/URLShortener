@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "../assets/styles/main.css";
 import Navbar from "./Navbar";
 import { io } from "socket.io-client";
-import Alert from "./Alert";
+import Alert from "./UI/Alert";
 
 const Main = () => {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [shortenedUrls, setShortenedUrls] = useState([]);
   const [error, setError] = useState({
     message: "",
@@ -12,7 +14,7 @@ const Main = () => {
   });
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
+    const socket = io(`${API_BASE_URL}`);
 
     socket.on("urlsUpdated", (data) => {
       setShortenedUrls(data);
@@ -21,7 +23,7 @@ const Main = () => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [API_BASE_URL]);
 
   const expiryOptions = [
     { label: "1 minute", value: 1 },
@@ -47,7 +49,7 @@ const Main = () => {
     const originalUrl = formData.get("originalUrl");
     const expiresInMinutes = formData.get("expiresInMinutes");
     try {
-      const response = await fetch("http://localhost:8080/addUrl", {
+      const response = await fetch(`${API_BASE_URL}/addUrl`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ original_url: originalUrl, expiresInMinutes }),
