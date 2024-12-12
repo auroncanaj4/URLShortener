@@ -2,6 +2,7 @@ import express from "express";
 import template from "./template.js";
 import cors from "cors";
 import isUrl from "is-url";
+import qrCode from "qrcode";
 
 import {
   createUrl,
@@ -104,6 +105,29 @@ app.delete("/deleteUrl/:id", async (req, res) => {
   } catch (err) {
     console.error("Database error:", err);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/generateQr/:shortCode", async (req, res) => {
+  const { shortCode } = req.params;
+  try {
+    const results = await getShortUrl(shortCode);
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: "URL not found" });
+    }
+
+    const url = results[0];
+    if (url.expires_at < new Date()) {
+      return res.status(404).json({ error: "URL has expired" });
+    }
+    const qrCodeUrl = await qrCode.toDataURL(url.original_url);
+    const urls = await getUrls();
+    io.emit("urlsUpdated", urls);
+    res.send(qrCodeUrl);
+  } catch (err) {
+    console.error("Error generating QR code:", err);
+    res.status(500).send("Error generating QR code");
   }
 });
 
