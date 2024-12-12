@@ -11,7 +11,7 @@ const QrModal = ({ qrCodeValue, qrUrl, onCloseModal, isErrorModal }) => {
           <h1 className="errorTitle">Oops!!</h1>
           <span className="errorStatus">404 - COULD NOT GENERATE QR CODE</span>
           <p className="errorDescription">
-            The link you are trying to visit has <i>expired</i> and is no longer
+            The link you are trying to visit has <i>expired</i> or is not longer
             valid.
           </p>
         </>
