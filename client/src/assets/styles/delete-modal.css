@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  font-weight: 500;
+}
+.deleteQuestion {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+.urlDelete {
+  text-decoration: none;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-content: center;
+}
+.deleteButton {
+  border: none;
+  background-color: #92278f;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  padding: 0.5rem 1rem;
+}
+.deleteButton:hover {
+  background-color: #661d64;
+}
+.cancelButton {
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.5s ease-in-out;
+  padding: 0.5rem 1rem;
+  background-color: rgb(215, 219, 219);
+}
+.cancelButton:hover {
+  background-color: rgb(166, 167, 167);
+}

@@ -1,0 +1,33 @@
+:root {
+  --success: #51be56;
+  --danger: #ff5722;
+}
+.alert {
+  width: 40%;
+  border: 1px solid var(--danger);
+  border-left: 5px solid var(--danger);
+  box-shadow: 0 0 4px #ddd, 0 2px 10px #ddd, 0 2px 20px #ddd;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  transition: 0.5s ease-in;
+  position: absolute;
+  top: 5px;
+}
+
+.alert.close {
+  transform: translateY(40px);
+  background: #fff;
+  opacity: 0;
+}
+
+.text {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.text p {
+  color: #666;
+  margin: 5px 0;
+  font-size: 14px;
+}

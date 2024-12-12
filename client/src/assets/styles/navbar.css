@@ -1,0 +1,55 @@
+.navbar {
+  background-color: #efefef;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem 2rem 0;
+  gap: 2rem;
+}
+
+.shortenedUrlList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.shortenedUrlContainer {
+  width: 100%;
+}
+.shortenedUrl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.listElementUrl {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+}
+.listElementUrl a {
+  width: 100%;
+  color: #57b3e7;
+}
+.buttonIcon {
+  width: 20px;
+  cursor: pointer;
+  filter: invert();
+}
+
+.clickCount {
+  font-size: 14px;
+  color: #9bb7f4;
+  margin: 0;
+}
+@media (max-width: 650px) {
+  .listElementUrl {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

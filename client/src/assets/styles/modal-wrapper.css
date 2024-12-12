@@ -1,0 +1,43 @@
+.overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalWrapper {
+  display: flex;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px 2px #00000029;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  max-width: 90%;
+  width: 400px;
+  position: relative;
+}
+.closeModal {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 0;
+  background-color: transparent;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  transition: 0.2s ease;
+}
+.closeModal:hover {
+  cursor: pointer;
+  background-color: rgb(147, 145, 145);
+}
