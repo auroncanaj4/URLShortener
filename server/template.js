@@ -1,3 +1,4 @@
+const homeUrl = `http://localhost:5173/`;
 const errorPage = `
     <!DOCTYPE html>
     <html lang="en">

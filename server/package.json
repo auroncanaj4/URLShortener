@@ -6,12 +6,16 @@
   "author": "auroncanaj <auroncanaj4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "yarn nodemon index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^5.0.1",
     "mysql2": "^3.11.5",
-    "nanoid": "^5.0.9"
+    "nanoid": "^5.0.9",
+    "cors": "^2.8.5",
+    "is-url": "^1.2.4",
+    "nodemon": "^3.1.7",
+    "socket.io": "^4.8.1"
   }
 }
