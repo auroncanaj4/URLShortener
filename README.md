@@ -8,14 +8,16 @@ Just for the sake of getting to run it without issues I pushed the schema.db and
 
 Frontend:
 
-```cd ./client
+```
+    cd ./client
     yarn
     yarn dev
 ```
 
 Backend:
 
-```cd ./server (from root path of the project)
+```
+    cd ./server (from root path of the project)
     yarn
     yarn dev
 ```
