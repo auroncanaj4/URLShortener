@@ -79,7 +79,7 @@ app.get("/:shortCode", async (req, res) => {
     const url = results[0];
 
     if (url.expires_at < new Date()) {
-      return res.status(404).send({ template });
+      return res.status(404).send(template.errorPage);
     }
     await incrementClickCount(url.id);
 
@@ -112,7 +112,6 @@ app.get("/generateQr/:shortCode", async (req, res) => {
   const { shortCode } = req.params;
   try {
     const results = await getShortUrl(shortCode);
-
     if (results.length === 0) {
       return res.status(404).json({ error: "URL not found" });
     }

@@ -1,4 +1,7 @@
-const homeUrl = `http://localhost:5173/`;
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const errorPage = `
     <!DOCTYPE html>
     <html lang="en">
@@ -51,7 +54,7 @@ const errorPage = `
         <h1>Oops!!</h1>
         <span>404 - PAGE NOT FOUND</span>
         <p>The link you are trying to visit has <i>expired</i> and is no longer valid.</p>
-        <a href=${homeUrl}>Go back to homepage</a>
+        <a href=${process.env.FRONT_URL}>Go back to homepage</a>
       </body>
     </html>
   `;

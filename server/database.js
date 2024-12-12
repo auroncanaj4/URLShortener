@@ -13,7 +13,7 @@ const pool = mysql
   .promise();
 
 export const getUrls = async () => {
-  const [rows] = await pool.query("SELECT * from urls");
+  const [rows] = await pool.query("SELECT * from urls ORDER BY id DESC");
   return rows;
 };
 
