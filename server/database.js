@@ -11,3 +11,22 @@ const pool = mysql
     database: process.env.MYSQL_DATABASE,
   })
   .promise();
+
+export const getUrls = async () => {
+  const [rows] = await pool.query("SELECT * from urls");
+  return rows;
+};
+
+export const createUrl = async (originalUrl, shortCode, expiresAt) => {
+  const [result] = await pool.query(
+    `INSERT INTO urls (original_url, short_code, expires_at) VALUES (?, ?, ?)`,
+    [originalUrl, shortCode, expiresAt]
+  );
+
+  return result;
+};
+
+export const deleteUrl = async (id) => {
+  const [result] = await pool.query(`DELETE FROM urls WHERE id=?`, [id]);
+  return result;
+};
