@@ -26,6 +26,23 @@ export const createUrl = async (originalUrl, shortCode, expiresAt) => {
   return result;
 };
 
+export const getShortUrl = async (shortCode) => {
+  const [results] = await pool.query(
+    "SELECT id, original_url, expires_at FROM urls WHERE short_code = ?",
+    [shortCode]
+  );
+
+  return results;
+};
+
+export const incrementClickCount = async (id) => {
+  const [result] = await pool.query(
+    "UPDATE urls SET click_count = click_count + 1 WHERE id = ?",
+    [id]
+  );
+  return result;
+};
+
 export const deleteUrl = async (id) => {
   const [result] = await pool.query(`DELETE FROM urls WHERE id=?`, [id]);
   return result;

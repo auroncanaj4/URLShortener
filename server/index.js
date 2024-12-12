@@ -1,7 +1,8 @@
 import express from "express";
 
-import { getUrls } from "./database";
+import { getShortUrl, getUrls, incrementClickCount } from "./database";
 import { customAlphabet } from "nanoid";
+import template from "./template";
 
 const app = express();
 
@@ -40,6 +41,29 @@ app.post("/addUrl", async (req, res) => {
       : null;
     const result = await createUrl(original_url, shortCode, expiresAt);
     res.status(201).send(result);
+  } catch (err) {
+    console.error("Database error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/:shortCode", async (req, res) => {
+  const { shortCode } = req.params;
+
+  try {
+    const results = await getShortUrl(shortCode);
+    if (results.length === 0) {
+      return res.status(404).json({ error: "URL not found" });
+    }
+
+    const url = results[0];
+
+    if (url.expires_at < new Date()) {
+      return res.status(404).send({ template });
+    }
+    await incrementClickCount(url.id);
+
+    res.redirect(url.original_url);
   } catch (err) {
     console.error("Database error:", err);
     res.status(500).json({ error: "Internal server error" });
