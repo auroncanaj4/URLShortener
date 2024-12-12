@@ -69,7 +69,7 @@
     width: 100%;
   }
 }
-@media (max-width: 580px) {
+@media (max-width: 650px) {
   .mainContainer {
     padding: 5rem 2rem;
   }

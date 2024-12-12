@@ -7,7 +7,7 @@
   grid-template-columns: auto 1fr;
   justify-content: center;
 }
-@media (max-width: 580px) {
+@media (max-width: 630px) {
   .wrapper {
     display: flex;
     flex-direction: column;
