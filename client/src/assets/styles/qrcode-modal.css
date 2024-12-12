@@ -24,3 +24,17 @@
   filter: invert(0.4);
   cursor: pointer;
 }
+.errorTitle {
+  margin: 0;
+  color: #92278f;
+  font-size: 100px;
+  font-weight: 900;
+}
+.errorStatus {
+  font-size: 18px;
+  font-weight: 800;
+}
+.errorDescription {
+  margin: 0;
+  text-align: center;
+}

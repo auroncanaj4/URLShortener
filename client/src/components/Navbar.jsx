@@ -15,6 +15,7 @@ const Navbar = ({ shortenedUrls }) => {
     value: null,
     shortCode: null,
   });
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const handleShowDelete = (id) => {
     setShowDelete((previous) => (previous === id ? null : id));
@@ -47,7 +48,7 @@ const Navbar = ({ shortenedUrls }) => {
     try {
       const response = await fetch(`${API_BASE_URL}/generateQr/${shortCode}`);
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        setShowErrorModal(true);
       }
       const qrCodeUrl = await response.text();
       setQrCode({
@@ -92,6 +93,7 @@ const Navbar = ({ shortenedUrls }) => {
               qrCodeValue={qrCode.value}
               qrUrl={item.short_code}
               onCloseModal={handleCloseQrModal}
+              isErrorModal={showErrorModal}
             />
           )}
         </li>
