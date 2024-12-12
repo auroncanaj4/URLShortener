@@ -59,6 +59,7 @@ const Main = () => {
         const errorData = await response.json();
         throw new Error(errorData.error);
       }
+      event.target.reset();
     } catch (err) {
       showAlert(err.message);
       console.error("Error adding URL:", err.message);
